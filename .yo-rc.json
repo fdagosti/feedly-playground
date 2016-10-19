@@ -1,0 +1,12 @@
+{
+  "generator-ng-fullstack": {
+    "username": "fdagosti",
+    "appName": "feedly-playground",
+    "stack": "fullstack",
+    "server": "node",
+    "client": "ng2",
+    "transpilerServer": "node",
+    "secure": false,
+    "differentStaticServer": false
+  }
+}

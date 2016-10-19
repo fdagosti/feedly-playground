@@ -1,0 +1,8 @@
+.idea
+coverage
+node_modules
+unit_coverage
+bower_components
+typings
+client/dev/**/*.js
+client/dev/**/*.js.map
