@@ -4,12 +4,14 @@ import { FormsModule, FormBuilder } from '@angular/forms';
 import { BrowserModule  } from '@angular/platform-browser';
 import { TodoCmp }   from './todo/components/todo-cmp';
 import { TodoService }   from './todo/services/todo-service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
       BrowserModule,
       FormsModule,
       HttpModule,
+      NgbModule.forRoot(),
     ],
    declarations: [
       TodoCmp,
