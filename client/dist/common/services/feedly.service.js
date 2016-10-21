@@ -13,34 +13,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-require('rxjs/add/operator/map');
-var TodoService = (function () {
-    function TodoService(_http) {
+require('rxjs/add/operator/toPromise');
+var FeedlyService = (function () {
+    function FeedlyService(_http) {
         this._http = _http;
+        this.feedlyToken = "AwQuqrGS0AFsZM0khw4qGM8awQ0p_BM1luK3jpNwWj-2vWIJKXk8j1ChTZXwJrssbflC6zDimaeto0qJpHQ6HYidG_qv7DpErLsjChapRKLQ5b26mVlWqzOWvNib1oul6qN4oenYEdMqW9rwkLDkvIPPoQJH7LQNOiwcuPzL0CUJmfQBcY-lS7cuXtf0dXXtt0OBpkixoPFec3d-34ZoCGGX:feedlydev";
+        this.headers = new http_1.Headers({ "Authorization": "OAuth " + this.feedlyToken });
     }
-    TodoService.prototype.getAll = function () {
-        return this._http
-            .get(TodoService.ENDPOINT.replace(':id', ''))
-            .map(function (r) { return r.json(); });
+    FeedlyService.prototype.getSubscriptions = function () {
+        console.log("ASKING Subscriptions");
+        return this._http.get(FeedlyService.ENDPOINT, { headers: this.headers })
+            .toPromise()
+            .then(function (response) { return response.json(); });
     };
-    TodoService.prototype.add = function (message) {
-        var _messageStringified = JSON.stringify({ todoMessage: message });
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        return this._http
-            .post(TodoService.ENDPOINT.replace(':id', ''), _messageStringified, { headers: headers })
-            .map(function (r) { return r.json(); });
-    };
-    TodoService.prototype.remove = function (id) {
-        return this._http
-            .delete(TodoService.ENDPOINT.replace(':id', id));
-    };
-    TodoService.ENDPOINT = '/api/todos/:id';
-    TodoService = __decorate([
+    FeedlyService.ENDPOINT = 'http://cloud.feedly.com/v3/subscriptions';
+    FeedlyService = __decorate([
         core_1.Injectable(),
         __param(0, core_1.Inject(http_1.Http)), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], TodoService);
-    return TodoService;
+    ], FeedlyService);
+    return FeedlyService;
 }());
-exports.TodoService = TodoService;
+exports.FeedlyService = FeedlyService;

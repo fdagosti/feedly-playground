@@ -1,0 +1,1 @@
+"use strict";var Pakou=function(){function u(){}return u}();exports.Pakou=Pakou;

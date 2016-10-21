@@ -1,0 +1,1 @@
+"use strict";require("./test2");var p=new Pakou;

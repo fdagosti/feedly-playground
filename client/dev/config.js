@@ -20,6 +20,7 @@ System.config({
     '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
     // other libraries
-    'rxjs':                       'npm:rxjs'
+    'rxjs':                       'npm:rxjs',
+    '@ng-bootstrap/ng-bootstrap': 'npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',
   }
 });
