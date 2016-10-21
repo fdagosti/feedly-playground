@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class FeedlyService {
   
-  static ENDPOINT: string = 'http://cloud.feedly.com/v3/subscriptions';
+  static ENDPOINT: string = 'https://cloud.feedly.com/v3/subscriptions';
   private feedlyToken = "AwQuqrGS0AFsZM0khw4qGM8awQ0p_BM1luK3jpNwWj-2vWIJKXk8j1ChTZXwJrssbflC6zDimaeto0qJpHQ6HYidG_qv7DpErLsjChapRKLQ5b26mVlWqzOWvNib1oul6qN4oenYEdMqW9rwkLDkvIPPoQJH7LQNOiwcuPzL0CUJmfQBcY-lS7cuXtf0dXXtt0OBpkixoPFec3d-34ZoCGGX:feedlydev"
   private headers = new Headers({"Authorization": "OAuth "+this.feedlyToken});
 
