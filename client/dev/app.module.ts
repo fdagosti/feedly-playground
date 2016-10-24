@@ -1,16 +1,13 @@
-import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { FormsModule, FormBuilder } from '@angular/forms';
-import { BrowserModule  } from '@angular/platform-browser';
-import { TodoCmp }   from './todo/components/todo-cmp';
-import { AppComponent }   from './app.component';
-import { LandingComponent }   from './landing/landing.component';
-import { FeedlySubsComponent }   from './subs/subscriptions.component';
-import { LoginComponent }   from './auth/login.component';
-import { TodoService }   from './todo/services/todo-service';
-import { FeedlyService }   from './common/services/feedly.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule }   from '@angular/router';
+import {NgModule} from "@angular/core";
+import {HttpModule} from "@angular/http";
+import {FormsModule} from "@angular/forms";
+import {BrowserModule} from "@angular/platform-browser";
+import {AppComponent} from "./app.component";
+import {LandingComponent} from "./landing/landing.component";
+import {FeedlySubsComponent} from "./subs/subscriptions.component";
+import {LoginComponent} from "./auth/login.component";
+import {FeedlyService} from "./common/services/feedly.service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {AuthService} from "./auth/authentication.service";
 
 @NgModule({

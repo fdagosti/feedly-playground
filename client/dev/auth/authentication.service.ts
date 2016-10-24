@@ -19,7 +19,7 @@ export class AuthService {
 
   // Francois Feedly dev token (for debug purpose)
   //AwQuqrGS0AFsZM0khw4qGM8awQ0p_BM1luK3jpNwWj-2vWIJKXk8j1ChTZXwJrssbflC6zDimaeto0qJpHQ6HYidG_qv7DpErLsjChapRKLQ5b26mVlWqzOWvNib1oul6qN4oenYEdMqW9rwkLDkvIPPoQJH7LQNOiwcuPzL0CUJmfQBcY-lS7cuXtf0dXXtt0OBpkixoPFec3d-34ZoCGGX:feedlydev
-  public loginStateChanged$: EventEmitter;
+  public loginStateChanged$: EventEmitter<string>;
 
   constructor(private _http: Http){
     this.loginStateChanged$ = new EventEmitter();
