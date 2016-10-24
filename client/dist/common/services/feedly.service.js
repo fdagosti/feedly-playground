@@ -14,23 +14,29 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var authentication_service_1 = require("../../auth/authentication.service");
 var FeedlyService = (function () {
-    function FeedlyService(_http) {
+    function FeedlyService(_http, _auth) {
         this._http = _http;
-        this.feedlyToken = "AwQuqrGS0AFsZM0khw4qGM8awQ0p_BM1luK3jpNwWj-2vWIJKXk8j1ChTZXwJrssbflC6zDimaeto0qJpHQ6HYidG_qv7DpErLsjChapRKLQ5b26mVlWqzOWvNib1oul6qN4oenYEdMqW9rwkLDkvIPPoQJH7LQNOiwcuPzL0CUJmfQBcY-lS7cuXtf0dXXtt0OBpkixoPFec3d-34ZoCGGX:feedlydev";
-        this.headers = new http_1.Headers({ "Authorization": "OAuth " + this.feedlyToken });
+        this._auth = _auth;
     }
     FeedlyService.prototype.getSubscriptions = function () {
-        console.log("ASKING Subscriptions");
-        return this._http.get(FeedlyService.ENDPOINT, { headers: this.headers })
+        var token = this._auth.getToken().token;
+        var options = {
+            headers: new http_1.Headers({
+                "Authorization": "OAuth " + token
+            })
+        };
+        return this._http.get(FeedlyService.PROXY + FeedlyService.ENDPOINT, options)
             .toPromise()
             .then(function (response) { return response.json(); });
     };
-    FeedlyService.ENDPOINT = 'http://cloud.feedly.com/v3/subscriptions';
+    FeedlyService.PROXY = "https://cisco-itk-proxy.herokuapp.com/";
+    FeedlyService.ENDPOINT = 'https://cloud.feedly.com/v3/subscriptions';
     FeedlyService = __decorate([
         core_1.Injectable(),
         __param(0, core_1.Inject(http_1.Http)), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, authentication_service_1.AuthService])
     ], FeedlyService);
     return FeedlyService;
 }());

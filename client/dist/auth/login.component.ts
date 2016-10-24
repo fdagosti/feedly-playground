@@ -1,30 +1,61 @@
-import {Component, OnInit} from '@angular/core';
-import {Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import {Component, OnInit} from "@angular/core";
+import {AuthService} from "./authentication.service";
 
 @Component({
   selector: 'feedly-login',
   template: `
-    <form>
+
+<h2>Login</h2>
+<div role="alert" [hidden]="!error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="profile">
+  <p>Current Profile: {{profile.fullName}}</p>
+  <button class="btn btn-primary" (click)="logout()" >Logout</button>
+</div>
+<form *ngIf="!profile" (submit)="register()">
+    
   <div class="form-group">
-    <label for="exampleInputEmail1">Feedly account</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <label for="exampleInputPassword1">Dev Token</label>
+    <input type="text" [(ngModel)]="token" name="token" class="form-control" id="exampleInputPassword1" placeholder="Development Token">
+    <div class="form-text text-muted">You can request a dev token <a target="_blank" href="https://feedly.com/v3/auth/dev">here</a></div>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
   `,
 })
 export class LoginComponent implements OnInit {
-  subs = [];
+  private token: string;
+  private profile;
+  private error: string;
 
-  constructor() {
+  constructor(private auth: AuthService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.profile = this.auth.currentUser();
   }
+
+  logout(){
+    this.auth.logout();
+    this.profile = null;
+  }
+
+
+
+  register() {
+    this.auth.login(this.token).then(
+      profile => {
+        this.error = "";
+        this.profile = profile;
+      },
+      error=>{
+        if (error.errorCode === 401){
+          this.error="wrong Authentication Token";
+        }else{
+          this.error = "Error";
+        }
+      });
+  }
+
 
 }

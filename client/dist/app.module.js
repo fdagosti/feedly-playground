@@ -12,14 +12,13 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var platform_browser_1 = require('@angular/platform-browser');
-var todo_cmp_1 = require('./todo/components/todo-cmp');
 var app_component_1 = require('./app.component');
 var landing_component_1 = require('./landing/landing.component');
 var subscriptions_component_1 = require('./subs/subscriptions.component');
 var login_component_1 = require('./auth/login.component');
-var todo_service_1 = require('./todo/services/todo-service');
 var feedly_service_1 = require('./common/services/feedly.service');
 var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
+var authentication_service_1 = require("./auth/authentication.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -33,14 +32,13 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                todo_cmp_1.TodoCmp,
                 landing_component_1.LandingComponent,
                 subscriptions_component_1.FeedlySubsComponent,
                 login_component_1.LoginComponent,
             ],
             providers: [
-                todo_service_1.TodoService,
                 feedly_service_1.FeedlyService,
+                authentication_service_1.AuthService,
             ],
             bootstrap: [
                 app_component_1.AppComponent,

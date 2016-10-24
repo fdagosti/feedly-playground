@@ -15,7 +15,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            template: "\n  <feedly-login></feedly-login>\n  <feedly-subs></feedly-subs>\n  "
+            template: "\n  <div class=\"container\">\n\n      <feedly-subs class=\"col-sm-8\"></feedly-subs>\n\n      \n      <feedly-login class=\"col-sm-4\"></feedly-login>\n      \n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

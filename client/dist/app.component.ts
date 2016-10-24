@@ -5,8 +5,14 @@ import {Component} from "@angular/core";
   selector: 'app',
   
   template: `
-  <feedly-login></feedly-login>
-  <feedly-subs></feedly-subs>
+  <div class="container">
+
+      <feedly-subs class="col-sm-8"></feedly-subs>
+
+      
+      <feedly-login class="col-sm-4"></feedly-login>
+      
+  </div>
   `
 
 })

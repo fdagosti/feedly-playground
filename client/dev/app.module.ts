@@ -10,6 +10,8 @@ import { LoginComponent }   from './auth/login.component';
 import { TodoService }   from './todo/services/todo-service';
 import { FeedlyService }   from './common/services/feedly.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule }   from '@angular/router';
+import {AuthService} from "./auth/authentication.service";
 
 @NgModule({
     imports: [
@@ -20,14 +22,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ],
    declarations: [
       AppComponent,
-      TodoCmp,
       LandingComponent,
       FeedlySubsComponent,
       LoginComponent,
     ],
     providers: [
-      TodoService,
       FeedlyService,
+      AuthService,
     ],
     bootstrap: [
       AppComponent,
